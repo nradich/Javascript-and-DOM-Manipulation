@@ -29,10 +29,40 @@ const cells = rows.selectAll('td')
             .append('td')
             .text(function(d,i){
                 return d.value;
-            })
+            });
             
 
 
+
+
+// working with the button 
+// Select the submit button
+var submit = d3.select("#filter-btn");
+
+submit.on("click", function() {
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
+
+    // Select the input element and get the raw HTML node
+    var inputElement = d3.select("#datetime");
+
+    var inputValue = inputElement.property("value");
+
+    //trying to match the inputted value with that in the stored data
+    var filteredData = tableData.filter(data => data.datetime === inputValue);
+
+    //seeing if this works
+    //it does work, now how do i reflect that in the webpage
+    console.log(filteredData);
+
+
+    // d3.select(".summary")
+    // .append("li").text(`Mean: ${mean}`)
+    // .append("li").text(`Median: ${median}`)
+    // .append("li").text(`Mode: ${mode}`)
+    // .append("li").text(`Variance: ${variance}`)
+    // .append("li").text(`Standard Deviation: ${standardDeviation}`);
+});
 
 
 // now have to input data with a for each function
