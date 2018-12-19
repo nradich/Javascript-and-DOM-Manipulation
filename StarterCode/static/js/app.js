@@ -3,11 +3,11 @@ var tableData = data;
 
 
 //selecting the ufo-table
-const ufoTable = d3.select('#ufo-table');
+var ufoTable = d3.select('#ufo-table');
 
-const columns = ['datetime','city', 'state', 'country', 'shape', 'durationMinutes', 'comments' ];
+var columns = ['datetime','city', 'state', 'country', 'shape', 'durationMinutes', 'comments' ];
 
-const tbody = ufoTable.append('tbody');
+var tbody = ufoTable.append('tbody');
 
 
 // create a row for each object in the table
@@ -18,7 +18,7 @@ var rows = tbody.selectAll('tr')
 
 // create a cell for each row  
 
-const cells = rows.selectAll('td')
+var cells = rows.selectAll('td')
             .data( function(row){
                 return columns.map(function(column){
                     return {column: column, value: row[column]}
@@ -55,14 +55,19 @@ submit.on("click", function() {
     //it does work, now how do i reflect that in the webpage
     console.log(filteredData);
 
-
-    // d3.select(".summary")
-    // .append("li").text(`Mean: ${mean}`)
-    // .append("li").text(`Median: ${median}`)
-    // .append("li").text(`Mode: ${mode}`)
-    // .append("li").text(`Variance: ${variance}`)
-    // .append("li").text(`Standard Deviation: ${standardDeviation}`);
+    //trying to reflect the filtered data into the webpage
+    //cells = filteredData; 
+    tbody.selectAll('tr').remove();
+    filteredData.forEach(function(obj){
+        var rows = tbody.append("tr");
+        Object.keys(obj).forEach(function(key){
+            rows.append("td").text(obj[key]);
+        })
+    })
 });
+
+//clear the table, then input the filtered data
+
 
 
 // now have to input data with a for each function
