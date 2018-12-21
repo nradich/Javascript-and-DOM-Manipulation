@@ -17,7 +17,6 @@ var rows = tbody.selectAll('tr')
         .append('tr');
 
 // create a cell for each row  
-
 var cells = rows.selectAll('td')
             .data( function(row){
                 return columns.map(function(column){
@@ -51,13 +50,14 @@ submit.on("click", function() {
     //trying to match the inputted value with that in the stored data
     var filteredData = tableData.filter(data => data.datetime === inputValue);
 
-    //seeing if this works
-    //it does work, now how do i reflect that in the webpage
     console.log(filteredData);
 
-    //trying to reflect the filtered data into the webpage
-    //cells = filteredData; 
+   
+
+    //clears to webpage output
     tbody.selectAll('tr').remove();
+
+    //inputs the filtered data into the table
     filteredData.forEach(function(obj){
         var rows = tbody.append("tr");
         Object.keys(obj).forEach(function(key){
@@ -66,13 +66,4 @@ submit.on("click", function() {
     })
 });
 
-//clear the table, then input the filtered data
 
-
-
-// now have to input data with a for each function
-
-//then work on button/search functionality 
-
-
-// YOUR CODE HERE!
