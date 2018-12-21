@@ -1,4 +1,4 @@
-Homework for Week 14 of Class.
+Homework for Week 14 of class.
 
 This homework assigment asked students to display UFO information onto a webpage using Javascript and to give users the ability to filter that data by entering a date.
 
